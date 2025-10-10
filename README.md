@@ -1,7 +1,24 @@
 # <img width="50px" style="margin-bottom:-12px;" src="./frontend/public/images/hatt-logo.png" alt="Hatt"></img> Hatt
 
-## Hatt is no longer being updated on this repo
-### If yo wish to maintain it, send a message on the discord server and I will link your fork on this readme
+## 🌐 Web Version Now Available!
+
+**NEW**: Hatt is now available as a modern Progressive Web App (PWA) that can be deployed to Vercel and used in any web browser, including mobile phones!
+
+- ✅ **No Installation Required** - Use directly in your browser
+- ✅ **PWA Support** - Install on mobile devices like a native app
+- ✅ **Modern & Responsive** - Optimized for desktop, tablet, and mobile
+- ✅ **Same Great Features** - Search across 89+ websites simultaneously
+- ✅ **Deploy to Vercel** - Free hosting on Vercel's edge network
+
+👉 **[See WEB_VERSION.md](./WEB_VERSION.md)** for features and deployment guide  
+👉 **[See DEPLOYMENT.md](./DEPLOYMENT.md)** for step-by-step deployment instructions
+
+---
+
+## Original Desktop Version
+
+### Note: Desktop version is no longer being actively updated
+If you wish to maintain it, send a message on the discord server and the maintainer will link your fork on this readme.
 
 This tool allows to search for files through multiple websites, with an intuitive user interface. Similarly to what [Jackett](https://github.com/Jackett/Jackett) does, but for DDL (direct download) and streaming.
 
@@ -115,12 +132,25 @@ If a source is broken, down or should not be trusted anymore, please open an iss
 - Clean and intuitive interface
 - Dark mode
 - Almost no js rendering, mostly static parsing for high performances
+- **NEW**: Progressive Web App (PWA) support for mobile devices
 
 ## Installation
 
-Here are the different ways you can get Hatt :
+### 🌐 Web Version (Recommended)
 
-### Linux
+**Use Hatt directly in your browser - no installation needed!**
+
+1. **Deploy to Vercel** (free): See [DEPLOYMENT.md](./DEPLOYMENT.md)
+2. **Or use a hosted instance** (if available from the community)
+3. **Install as PWA on mobile**: Open in mobile browser → Add to Home Screen
+
+See [WEB_VERSION.md](./WEB_VERSION.md) for complete web version documentation.
+
+### 💻 Desktop Version (Legacy)
+
+The desktop version is no longer actively maintained. Here are the historical installation methods:
+
+#### Linux
 
 - From the [releases tab](https://github.com/FrenchGithubUser/Hatt/releases)
 
