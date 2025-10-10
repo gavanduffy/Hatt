@@ -34,6 +34,7 @@ import CategorySelector from 'src/components/categories/CategorySelector.vue'
 import DisplayedWebsites from 'src/components/websites/DisplayedWebsites.vue'
 import SearchResults from 'src/components/results/SearchResults.vue'
 import SearchBar from 'src/components/SearchBar.vue'
+import { api } from 'src/services/api.js'
 
 export default defineComponent({
   name: 'IndexPage',
@@ -47,28 +48,27 @@ export default defineComponent({
       searching: false,
     }
   },
-  created() {
-    runtime.EventsOn('websiteDone', (result) => {
-      this.results.push(result)
-      this.doneWebsites.push(result.Website)
-    })
-  },
   methods: {
-    updateWebsites() {
+    async updateWebsites() {
       let categories = this.$refs.categories.getSelectedCategories
       let customLists = this.$refs.categories.getSelectedCustomLists
-      window['go']['main']['App']
-        ['GetWebsitesWithCategories'](categories)
-        .then((data) => {
-          this.selectedWebsites = data ?? []
-          customLists.forEach((list) => {
-            this.selectedWebsites = this.selectedWebsites.concat(list.sources)
-          })
-          let set = new Set(this.selectedWebsites)
-          this.selectedWebsites = Array.from(set)
+      try {
+        const data = await api.getWebsitesWithCategories(categories)
+        this.selectedWebsites = data ?? []
+        customLists.forEach((list) => {
+          this.selectedWebsites = this.selectedWebsites.concat(list.sources)
         })
+        let set = new Set(this.selectedWebsites)
+        this.selectedWebsites = Array.from(set)
+      } catch (error) {
+        console.error('Error updating websites:', error)
+        this.$q.notify({
+          type: 'negative',
+          message: 'Failed to load websites'
+        })
+      }
     },
-    search() {
+    async search() {
       this.searching = true
       this.results = []
       this.doneWebsites = []
@@ -81,12 +81,30 @@ export default defineComponent({
       let selectedCategories = this.$refs.categories.getSelectedCategories
       if (selectedWebsites.length === 0) {
         this.$q.notify(this.$t('notifications.choose_a_category'))
+        this.searching = false
+        return
       }
-      window['go']['main']['App']
-        ['Search'](this.input, selectedWebsites, selectedCategories)
-        .then(() => {
-          this.searching = false
+      
+      try {
+        const searchResults = await api.search(this.input, selectedWebsites, selectedCategories)
+        // Process results as they come in (simulate the Go behavior)
+        searchResults.forEach(result => {
+          this.results.push({
+            Website: result.website,
+            Items: result.items,
+            CompatibleDownloaders: result.compatibleDownloaders
+          })
+          this.doneWebsites.push(result.website)
         })
+      } catch (error) {
+        console.error('Search error:', error)
+        this.$q.notify({
+          type: 'negative',
+          message: 'Search failed: ' + error.message
+        })
+      } finally {
+        this.searching = false
+      }
     },
   },
 })
