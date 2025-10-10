@@ -11,7 +11,6 @@ FROM base AS builder
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend .
-COPY assets /app/assets
 RUN npm run build
 
 FROM base AS runner
@@ -29,7 +28,6 @@ COPY --from=builder /app/frontend/next-env.d.ts ./next-env.d.ts
 COPY --from=builder /app/frontend/postcss.config.js ./postcss.config.js
 COPY --from=builder /app/frontend/tailwind.config.js ./tailwind.config.js
 COPY --from=builder /app/frontend/tsconfig.json ./tsconfig.json
-COPY --from=builder /app/assets /app/assets
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]
