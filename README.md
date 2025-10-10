@@ -1,6 +1,6 @@
 # <img width="50px" style="margin-bottom:-12px;" src="./frontend/public/icons/icon.svg" alt="Hatt"></img> Hatt
 
-Hatt is now available as a progressive web application that runs directly in the browser. It keeps the original spirit of the project—helping you find the best sources for direct downloads and streaming—while delivering a fast, modern interface that works great on desktop and mobile. Deploy it to [Vercel](https://vercel.com/) or self-host it anywhere that supports static Next.js builds and enjoy the directory offline thanks to PWA capabilities.
+Hatt is now available as a progressive web application that runs directly in the browser. It keeps the original spirit of the project—helping you find the best sources for direct downloads and streaming—while delivering a fast, modern interface that works great on desktop and mobile. Deploy it to [Vercel](https://vercel.com/), run it locally, or self-host it anywhere that supports static Next.js builds and enjoy the directory offline thanks to PWA capabilities.
 
 <p align="center">
   <img src="https://img.shields.io/github/downloads/FrenchGithubUser/Hatt/total" alt="Downloads"/>
@@ -154,6 +154,25 @@ npm start
 ```
 
 The generated static assets are ready to deploy on Vercel or any static host. See CONTRIBUTING.md for more details
+
+## Run with Docker
+
+You can run the production build inside a Docker container. The included `deploy.sh` helper script builds the image and starts a container that binds the application to port `36678` on the host machine by default.
+
+```
+./deploy.sh
+```
+
+To customise the deployment, set any of the following environment variables before running the script:
+
+| Variable | Description | Default |
+| --- | --- | --- |
+| `IMAGE_NAME` | Name for the Docker image that will be built. | `hatt-web` |
+| `CONTAINER_NAME` | Name for the running container. | `hatt-web` |
+| `HOST_PORT` | Host port to expose the application on. | `36678` |
+| `CONTAINER_PORT` | Container port the Next.js server listens on. | `3000` |
+
+The script requires Docker to be installed on the host machine.
 
 ## Not Goals (to this day)
 
