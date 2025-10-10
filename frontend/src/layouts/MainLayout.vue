@@ -64,16 +64,13 @@ export default defineComponent({
   },
   methods: {
     openLink(link) {
-      window['runtime']['BrowserOpenURL'](link)
+      // For web version, use window.open
+      window.open(link, '_blank')
     },
   },
   created() {
-    window['go']['main']['App']['CheckForUpdate']().then((data) => {
-      if (data.Name !== '') {
-        this.updateDetails = data
-        this.updatePopup = true
-      }
-    })
+    // For web version, skip update checks (not applicable)
+    // Update functionality would need to be handled differently in a web app
   },
 })
 </script>

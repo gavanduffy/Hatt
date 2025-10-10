@@ -47,9 +47,32 @@ export default defineComponent({
     },
   },
   created() {
-    window['go']['main']['App']['ReadUserSettings']().then((data) => {
-      this.settingsValues = data
-    })
+    // For web version, settings are stored in localStorage
+    const settings = localStorage.getItem('settings')
+    if (settings) {
+      try {
+        this.settingsValues = JSON.parse(settings)
+        window.settings = this.settingsValues
+      } catch (e) {
+        // Initialize with default settings
+        this.settingsValues = {
+          general: {
+            xxx: false,
+            language: 'en'
+          }
+        }
+        window.settings = this.settingsValues
+      }
+    } else {
+      // Initialize with default settings
+      this.settingsValues = {
+        general: {
+          xxx: false,
+          language: 'en'
+        }
+      }
+      window.settings = this.settingsValues
+    }
   },
 })
 </script>

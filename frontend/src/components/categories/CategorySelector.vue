@@ -71,11 +71,27 @@ export default defineComponent({
     }
   },
   created() {
-    window['go']['main']['App']['ReadCustomLists']().then((data) => {
-      this.customLists = data ?? []
-    })
-    if (window.settings.general.xxx) {
-      this.categories = this.categories.concat(this.xxxCategories)
+    // For web version, custom lists would be stored in localStorage
+    const storedLists = localStorage.getItem('customLists')
+    if (storedLists) {
+      try {
+        this.customLists = JSON.parse(storedLists) ?? []
+      } catch (e) {
+        this.customLists = []
+      }
+    }
+    
+    // Check for XXX setting in localStorage
+    const settings = localStorage.getItem('settings')
+    if (settings) {
+      try {
+        const parsedSettings = JSON.parse(settings)
+        if (parsedSettings.general?.xxx) {
+          this.categories = this.categories.concat(this.xxxCategories)
+        }
+      } catch (e) {
+        // Ignore parse errors
+      }
     }
   },
   computed: {
