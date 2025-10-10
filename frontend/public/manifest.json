@@ -1,0 +1,22 @@
+{
+  "name": "Hatt Directory",
+  "short_name": "Hatt",
+  "description": "Discover and search curated media download websites with mobile-friendly PWA support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ]
+}

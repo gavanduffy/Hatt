@@ -1,6 +1,6 @@
-# <img width="50px" style="margin-bottom:-12px;" src="./frontend/public/images/hatt-logo.png" alt="Hatt"></img> Hatt
+# <img width="50px" style="margin-bottom:-12px;" src="./frontend/public/icons/icon.svg" alt="Hatt"></img> Hatt
 
-This tool allows to search for files through multiple websites, with an intuitive user interface. Similarly to what [Jackett](https://github.com/Jackett/Jackett) does, but for DDL (direct download) and streaming.
+Hatt is now available as a progressive web application that runs directly in the browser. It keeps the original spirit of the project—helping you find the best sources for direct downloads and streaming—while delivering a fast, modern interface that works great on desktop and mobile. Deploy it to [Vercel](https://vercel.com/) or self-host it anywhere that supports static Next.js builds and enjoy the directory offline thanks to PWA capabilities.
 
 <p align="center">
   <img src="https://img.shields.io/github/downloads/FrenchGithubUser/Hatt/total" alt="Downloads"/>
@@ -11,7 +11,7 @@ This tool allows to search for files through multiple websites, with an intuitiv
   <a href="https://www.reddit.com/r/Hatt/" target="_blank"><img height="30px" alt="Subreddit subscribers" src="https://img.shields.io/reddit/subreddit-subscribers/hatt?label=Reddit&style=social"></a>
 </p>
 
-![Hatt - Home](.meta/home.jpg)
+![Hatt Directory preview](.meta/home.jpg)
 
 If you have suggestions (new features, new sources etc.), find a bug or want to notify about something, do not hesitate to open an issue.
 
@@ -103,15 +103,13 @@ If a source is broken, down or should not be trusted anymore, please open an iss
 
 ## Features
 
-- Parallel searching on many websites, all at the same time
-- Custom website lists to search on
-- Search on websites which require an account
-- Quickly filter results with a double search and different sorting methods
-- Big and ever growing list of supported websites
-- Multiple languages support
-- Clean and intuitive interface
-- Dark mode
-- Almost no js rendering, mostly static parsing for high performances
+- Curated directory of direct-download and streaming sources grouped by category
+- Instant search and filtering with per-category toggles
+- Local favourites so you can pin the websites you return to the most
+- Optional filters to hide login-only or adult websites
+- Responsive design with automatic light/dark themes
+- Installable PWA that works offline on mobile browsers
+- Ready-to-deploy static build for Vercel or any Next.js-compatible host
 
 ## Installation
 
@@ -138,13 +136,24 @@ Here are the different ways you can get Hatt :
 - Install linux
 
 
-## Build from source
+## Build the web app locally
+
+The web client lives in the `frontend/` folder and is built with Next.js.
 
 ```
-wails build
+cd frontend
+npm install
+npm run dev
 ```
 
-See CONTRIBUTING.md for more details
+To create a production build (the same output Vercel will serve):
+
+```
+npm run build
+npm start
+```
+
+The generated static assets are ready to deploy on Vercel or any static host. See CONTRIBUTING.md for more details
 
 ## Not Goals (to this day)
 
@@ -155,23 +164,15 @@ See CONTRIBUTING.md for more details
 
 ## FAQ
 
-<details> <summary> Why not making a website instead of a program ? </summary>
+<details> <summary> Why a web version now? </summary>
 
-This would allow more accessibility and less trust needed from the users, however :
-
-- It would require a server to do the scraping, as it is not possible to do it directly in the browser because of the CORS policy that most modern browsers have. This would mean extra costs, which I don't want to bother with, and could impact the project.
-
-- The server's IP address could easily be blocked by most of the sources. Another solution would be to maintain a local database, refreshed every x days, but this requires a lot of extra work (to maintain it, and to create a full-content scraper for every source)
-
-- Having a tool running on everyone's computer allows for more decentralization
-
-- I don't want to be held responsible of running such a service. This repository only provides some code, that you are free to run or not. The user takes the responsibility of what is done with it, not me.
+The original Hatt desktop client relied on the Wails framework and executed scraping logic locally. Thanks to community feedback we now offer a lightweight web-first experience that runs entirely in the browser and can be hosted on services such as Vercel. The scraping configurations remain open-source so power users can still build native binaries if desired, but the new PWA provides instant access without downloads.
 
 </details>
 
 <details> <summary> Is there a mobile version ? </summary>
 
-Hatt is built on top of the wails framework. As soon as wails support android/iOS builds, Hatt will be available for those platforms.
+Yes! Install the PWA from your browser's share menu ("Add to Home Screen" on iOS/Android) to enjoy an app-like experience with offline support.
 
 </details>
 

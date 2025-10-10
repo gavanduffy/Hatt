@@ -3,3 +3,4 @@ node_modules
 frontend/dist
 package-lock.json
 yarn.lock
+!frontend/package-lock.json
