@@ -1,9 +1,9 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "installCommand": "cd frontend && npm ci",
-  "buildCommand": "cd frontend && npm run build",
-  "devCommand": "cd frontend && npm run dev",
+  "installCommand": "sh -c 'if [ -f package.json ]; then npm ci; else cd frontend && npm ci; fi'",
+  "buildCommand": "sh -c 'if [ -f package.json ]; then npm run build; else cd frontend && npm run build; fi'",
+  "devCommand": "sh -c 'if [ -f package.json ]; then npm run dev; else cd frontend && npm run dev; fi'",
   "builds": [
     {
       "src": "frontend/next.config.js",
