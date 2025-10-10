@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Hatt Logo</title>
+  <desc id="desc">Rounded purple gradient tile with the letter H</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="120" fill="url(#bg)" />
+  <path
+    d="M176 140h48v96h64v-96h48v232h-48v-96h-64v96h-48z"
+    fill="#f9fafb"
+  />
+</svg>
