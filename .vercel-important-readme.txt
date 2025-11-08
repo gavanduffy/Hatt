@@ -1,0 +1,17 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║  IMPORTANT: Vercel Deployment Configuration Required!       ║
+║                                                              ║
+║  The Next.js web app is located in the 'frontend' directory.║
+║  To deploy successfully on Vercel, you MUST:                ║
+║                                                              ║
+║  1. Set "Root Directory" to "frontend" in your Vercel       ║
+║     project settings                                         ║
+║                                                              ║
+║  2. Vercel will auto-detect Next.js framework                ║
+║                                                              ║
+║  For detailed instructions, see: VERCEL_DEPLOYMENT.md       ║
+║                                                              ║
+║  To verify your setup is ready: ./verify-deployment.sh      ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝

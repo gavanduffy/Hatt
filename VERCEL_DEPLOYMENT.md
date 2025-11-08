@@ -1,5 +1,15 @@
 # Vercel Deployment Guide
 
+## Quick Verification
+
+Before deploying, you can verify that your repository is ready:
+
+```bash
+./verify-deployment.sh
+```
+
+This script will check that all required files are in place and that the build works correctly.
+
 ## Configuration Required
 
 To deploy this project to Vercel, you need to configure the **Root Directory** setting in your Vercel project because the Next.js application is located in the `frontend` subdirectory.

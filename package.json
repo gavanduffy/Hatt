@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
+    "postbuild": "echo 'Build completed in frontend/.next'",
     "start": "cd frontend && npm run start",
     "lint": "cd frontend && npm run lint"
   }
