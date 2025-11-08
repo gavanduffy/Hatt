@@ -66,3 +66,9 @@ The Hatt repository contains both:
 - The new Next.js web application (in the `frontend` subdirectory)
 
 Vercel needs to know which part to deploy, which is why the Root Directory must be explicitly set to `frontend`.
+
+### Common Issues
+
+- **404 Error**: This means the Root Directory is not configured correctly. Double-check that it's set to `frontend` in your Vercel project settings.
+- **Build Failures**: Ensure the Root Directory is set to `frontend` before deploying. The build will fail if Vercel tries to build from the repository root.
+- **Assets Not Loading**: This is usually resolved once the Root Directory is correctly configured, as the app will be able to properly locate the `../assets` directory during build.
