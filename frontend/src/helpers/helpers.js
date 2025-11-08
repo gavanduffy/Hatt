@@ -3,18 +3,18 @@ import { emitter } from 'src/boot/mitt.js'
 import { copyToClipboard, Dark, Notify } from 'quasar'
 
 export function updateSettings(showNotification = true) {
-  window['go']['main']['App']
-    ['UpdateUserSettings'](window.settings)
-    .then(() => {
-      if (showNotification) {
-        Notify.create(i18n.global.t('settings.saved'))
-      }
-      emitter.emit('settingsSaved')
-      return true
-    })
-    .catch((e) => {
-      return e
-    })
+  // For web version, save to localStorage
+  try {
+    localStorage.setItem('settings', JSON.stringify(window.settings))
+    if (showNotification) {
+      Notify.create(i18n.global.t('settings.saved'))
+    }
+    emitter.emit('settingsSaved')
+    return Promise.resolve(true)
+  } catch (e) {
+    console.error('Error saving settings:', e)
+    return Promise.reject(e)
+  }
 }
 export function copyLink(link) {
   copyToClipboard(link).then(() => {

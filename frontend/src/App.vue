@@ -14,19 +14,46 @@ export default defineComponent({
     }
   },
   created() {
-    window['go']['main']['App']['ReadUserSettings']().then((data) => {
-      window.settings = data
+    // For web version, settings are stored in localStorage
+    const settings = localStorage.getItem('settings')
+    if (settings) {
+      try {
+        const data = JSON.parse(settings)
+        window.settings = data
 
-      this.root = document.documentElement
-      this.root.style.setProperty(
-        '--thumbnails-size',
-        data.general.thumbnailsSize + 'px'
-      )
-      if (data.general.darkMode) {
-        toggleDarkMode()
+        this.root = document.documentElement
+        this.root.style.setProperty(
+          '--thumbnails-size',
+          (data.general?.thumbnailsSize || 150) + 'px'
+        )
+        if (data.general?.darkMode) {
+          toggleDarkMode()
+        }
+      } catch (e) {
+        console.error('Error loading settings:', e)
+        // Initialize with defaults
+        window.settings = {
+          general: {
+            thumbnailsSize: 150,
+            darkMode: false,
+            xxx: false,
+            language: 'en'
+          }
+        }
       }
-      this.ready = true
-    })
+    } else {
+      // Initialize with default settings
+      window.settings = {
+        general: {
+          thumbnailsSize: 150,
+          darkMode: false,
+          xxx: false,
+          language: 'en'
+        }
+      }
+      localStorage.setItem('settings', JSON.stringify(window.settings))
+    }
+    this.ready = true
   },
 })
 </script>

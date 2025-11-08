@@ -1,5 +1,12 @@
 build/bin
 node_modules
 frontend/dist
+frontend/node_modules
+api/node_modules
 package-lock.json
 yarn.lock
+.vercel
+.env
+.env.local
+frontend/.env
+frontend/.env.local
