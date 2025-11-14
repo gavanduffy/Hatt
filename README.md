@@ -153,7 +153,19 @@ npm run build
 npm start
 ```
 
-The generated static assets are ready to deploy on Vercel or any static host. See CONTRIBUTING.md for more details
+The generated static assets are ready to deploy on Vercel or any static host. See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for detailed Vercel deployment instructions.
+
+## Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gavanduffy/Hatt)
+
+**Important**: After clicking the deploy button or importing the repository, you MUST configure the **Root Directory** setting in your Vercel project:
+
+1. In the project configuration screen, find "Root Directory"
+2. Click "Edit" and set it to: `frontend`
+3. Click "Continue" to deploy
+
+For detailed deployment instructions, see [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md).
 
 ## Run with Docker
 
